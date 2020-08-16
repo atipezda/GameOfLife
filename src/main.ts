@@ -7,16 +7,18 @@ function setup() {
     squareSize = width / squaresInRow;
     for (let y = 0; y < width; y += squareSize) {
         for (let x = 0; x < width; x += squareSize) {
-            squares.push({x, y});
+            const isAlive = probabilityBool(10);
+            const newSquare = new Block(x,y,squareSize, isAlive);
+            squares.push(newSquare);
         }
     }
-    console.log(squares);
+    frameRate(1);
 }
 
 function draw() {
-    squares.forEach(sq => {
-        square(sq.x, sq.y, squareSize, squareSize);
-    })
+    squares.forEach((block: Block) => {
+        block.draw();
+    });
 
 }
 
