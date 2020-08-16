@@ -21,7 +21,7 @@ function setup() {
         SetNeighbours(block, blocks);
     });
 
-    frameRate(1);
+    frameRate(10);
 }
 
 function draw() {

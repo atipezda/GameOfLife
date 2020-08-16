@@ -3,7 +3,7 @@
 // function prepareNextGen(blocks: Block[]) {
 //     blocks.forEach((block:Block)=>{
 //         if(block.isAlive){
-//             block.isAlive = willSurvive(block, blocks);
+//             block.isAlive = willBeAlive(block, blocks);
 //         }
 //     })
 // }

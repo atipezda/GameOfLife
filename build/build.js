@@ -2,7 +2,7 @@ var Block = (function () {
     function Block(x, y, size, isAlive) {
         this.isAlive = false;
         this.neighbours = [];
-        this.willSurvive = false;
+        this.willBeAlive = false;
         this.x = x;
         this.y = y;
         this.size = size;
@@ -24,16 +24,17 @@ var Block = (function () {
         }
     };
     Block.prototype.nextGen = function () {
-        if (this.neighbours.filter(function (block) { return block.isAlive; }).length > 3) {
-            this.willSurvive = true;
+        var cellsAlive = this.neighbours.filter(function (block) { return block.isAlive; }).length;
+        if (this.isAlive) {
+            this.willBeAlive = cellsAlive >= 2 && cellsAlive <= 3;
         }
         else {
-            this.willSurvive = false;
+            this.willBeAlive = cellsAlive === 3;
         }
     };
     Block.prototype.nextDay = function () {
-        this.isAlive = this.willSurvive;
-        this.willSurvive = false;
+        this.isAlive = this.willBeAlive;
+        this.willBeAlive = false;
     };
     return Block;
 }());
@@ -65,7 +66,7 @@ function setup() {
     blocks.forEach(function (block) {
         SetNeighbours(block, blocks);
     });
-    frameRate(1);
+    frameRate(10);
 }
 function draw() {
     blocks.forEach(function (block) {

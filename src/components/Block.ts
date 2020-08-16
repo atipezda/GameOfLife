@@ -4,7 +4,7 @@ class Block {
     size: number;
     isAlive: boolean = false;
     neighbours: this[] = [];
-    willSurvive:boolean = false;
+    willBeAlive:boolean = false;
 
     constructor(x: number, y: number, size: number, isAlive: boolean) {
         this.x = x;
@@ -30,15 +30,16 @@ class Block {
     }
 
     nextGen(){
-        if (this.neighbours.filter(block => block.isAlive).length > 3) {
-            this.willSurvive = true;
+        const cellsAlive = this.neighbours.filter(block => block.isAlive).length;
+        if(this.isAlive){
+            this.willBeAlive = cellsAlive >= 2 && cellsAlive <= 3;
         }else{
-            this.willSurvive = false;
+            this.willBeAlive = cellsAlive === 3;
         }
     }
     nextDay(){
-        this.isAlive = this.willSurvive;
-        this.willSurvive = false;
+        this.isAlive = this.willBeAlive;
+        this.willBeAlive = false;
     }
 
 }
