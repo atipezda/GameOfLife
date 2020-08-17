@@ -24,9 +24,6 @@ class Block {
 
     setNeighbours(neighbours: this[]) {
         this.neighbours = neighbours;
-        if (this.isAlive) {
-            console.log(this.neighbours);
-        }
     }
 
     nextGen(){

@@ -1,5 +1,5 @@
 ///<reference path="helpers/generationHelper.ts"/>
-const squaresInRow = 20;
+const squaresInRow = 50;
 const blocks: any = [];
 let squareSize = 0;
 let l = 0;

@@ -19,9 +19,6 @@ var Block = (function () {
     };
     Block.prototype.setNeighbours = function (neighbours) {
         this.neighbours = neighbours;
-        if (this.isAlive) {
-            console.log(this.neighbours);
-        }
     };
     Block.prototype.nextGen = function () {
         var cellsAlive = this.neighbours.filter(function (block) { return block.isAlive; }).length;
@@ -48,7 +45,7 @@ function SetNeighbours(block, blocks) {
     });
     block.setNeighbours(neighbours);
 }
-var squaresInRow = 20;
+var squaresInRow = 50;
 var blocks = [];
 var squareSize = 0;
 var l = 0;
